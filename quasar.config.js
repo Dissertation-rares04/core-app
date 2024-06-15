@@ -11,7 +11,9 @@
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 const ESLintPlugin = require("eslint-webpack-plugin");
 const dependencies = require("./package.json").dependencies;
-require("dotenv").config(); // Load .env file
+require("dotenv").config({
+  path: [".env.local", ".env"],
+}); // Load .env file
 
 const { configure } = require("quasar/wrappers");
 const path = require("path");
@@ -139,19 +141,6 @@ module.exports = configure(function (ctx) {
         dark: "auto",
         loading: {
           message: "Loading...",
-        },
-        brand: {
-          primary: "#BA1200",
-          secondary: "#031927",
-          accent: "#792359",
-
-          dark: "#1d1d1d",
-          "dark-page": "#121212",
-
-          positive: "#00FFC5",
-          negative: "#C10015",
-          info: "#31CCEC",
-          warning: "#F2C037",
         },
       },
 
